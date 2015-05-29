@@ -3,7 +3,7 @@ Mis script de bash. Diferentes utilidades que me voy haciendo para ayudarme en e
 
 Por ahora:
 
-bitacora.sh- Lo uso para llevar la cuenta de qué hago y cuándo. Así luego no me cuesta registrar en qué he usado mi tiempo en el curro.
+<strong>bitacora.sh</strong>- Lo uso para llevar la cuenta de qué hago y cuándo. Así luego no me cuesta registrar en qué he usado mi tiempo en el curro.
 El funcionamiento es sencillo. Para ejecutar:
 
 $ bitacora -s "Lo que has estado haciendo"
