@@ -1,0 +1,5 @@
+hosts=(192.168.1.131 192.168.1.131);
+paths=("/aplicaciones/pruebasOrona/uno" "/aplicaciones/pruebasOrona/dos");
+servers=(tomcat jboss);
+users=(root root);
+passwords=(zuvmlapwebd01 zuvmlapwebd01);
