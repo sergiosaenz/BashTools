@@ -14,15 +14,16 @@
 main () {
 
 
-	if [ "$#" -lt 1 ]
+	if [ "$#" -lt 2 ]
 	then
 		showUsage;
 		exit;
 	fi
-	
-	server=$(echo "$1" | cut -d "/" -f1)
 
-	source ${0%/*}'/'deployConfig;
+	source ${0%/*}'/'deploy.conf;
+
+	server=${1#$rootPath};
+	server=$(echo "$server" | cut -d "/" -f2)
 	i=0;
 	
 	for ser in "${servers[@]}"
@@ -30,10 +31,9 @@ main () {
 		if [ "$server" == "$ser" ]
 		then
 			echo "Desplegando ${1##*/} en servidor $server"
-			dir=${1#*/}
-			dir=${dir%/*}
-			sshpass -p ${passwords[i]} ssh ${users[i]}@${hosts[i]} "mkdir -p ${paths[i]}/$dir";
-			sshpass -p ${passwords[i]} scp $1 ${users[i]}@${hosts[i]}:${paths[i]}/${1#*/}
+			dir=${1#$rootPath/$server}
+			sshpass -p ${passwords[i]} ssh ${users[i]}@${hosts[i]} "mkdir -p ${paths[i]}$dir";
+			sshpass -p ${passwords[i]} scp $2 ${users[i]}@${hosts[i]}:${paths[i]}/$2;
 			echo "DONE"
 		fi
 		i=$(($i+1))
